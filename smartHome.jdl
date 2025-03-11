@@ -1,0 +1,111 @@
+entity Devices {
+    deviceId String required,
+    name String required,
+    brand String required,
+    model String required,
+    type String required,
+    protocol String required,
+    firmware String,
+    ipAddress String,
+    macAddress String,
+    roomId String required,
+    capabilities String,
+    config JSON,
+    status JSON,
+    created ZonedDateTime required,
+    modified ZonedDateTime required
+}
+
+entity DeviceStates {
+    deviceId String required,
+    timestamp ZonedDateTime required,
+    state JSON,
+    source String,
+    userId String
+}
+
+entity Events {
+    timestamp ZonedDateTime required,
+    type String required,
+    level String required,
+    deviceId String required,
+    description String,
+    details JSON,
+    userId String,
+    ip String,
+    cameraId String
+}
+
+entity Videos {
+    cameraId String required,
+    filename String required,
+    startTime ZonedDateTime required,
+    endTime ZonedDateTime required,
+    duration Long required,
+    size Long required,
+    resolution JSON,
+    storage JSON,
+    status String,
+    tags String,
+    metadata JSON
+}
+
+entity Rooms {
+    roomId String required,
+    name String required,
+    type String required,
+    floor Integer required,
+    area Double required,
+    devices String,
+    layout JSON,
+    created ZonedDateTime required,
+    modified ZonedDateTime required,
+    cameraId String
+}
+
+entity Scenes {
+    sceneId String required,
+    name String required,
+    description String,
+    active Boolean required,
+    triggers JSON,
+    actions JSON,
+    created ZonedDateTime required,
+    modified ZonedDateTime required,
+    lastExecuted ZonedDateTime
+}
+
+entity Alerts {
+    timestamp ZonedDateTime required,
+    type String required,
+    level String required,
+    deviceId String required,
+    description String,
+    details JSON,
+    status String,
+    resolvedTime ZonedDateTime,
+    resolvedBy String,
+    notified Boolean required,
+    notificationTime ZonedDateTime,
+    cameraId String
+}
+
+// 定义关系
+relationship ManyToOne {
+    DeviceStates{device} to Devices,
+    Events{device} to Devices,
+    Rooms{device} to Devices,
+    Scenes{device} to Devices,
+    Alerts{device} to Devices,
+    Events{room} to Rooms,
+    Videos{room} to Rooms,
+    Alerts{room} to Rooms,
+    Rooms{camera} to Videos,
+    Alerts{camera} to Videos,
+    DeviceStates{camera} to Videos,
+    Events{camera} to Videos
+}
+
+dto Devices, DeviceStates, Events, Videos, Rooms, Scenes, Alerts with mapstruct
+paginate Devices, DeviceStates, Events, Videos, Rooms, Scenes, Alerts with pagination
+service Devices, DeviceStates, Events, Videos, Rooms, Scenes, Alerts with serviceClass
