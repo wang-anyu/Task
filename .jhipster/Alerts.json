@@ -1,0 +1,79 @@
+{
+  "annotations": {},
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "timestamp",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deviceId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resolvedTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "resolvedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notified",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "notificationTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "cameraId",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Alerts",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "devices",
+      "relationshipName": "device",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rooms",
+      "relationshipName": "room",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "videos",
+      "relationshipName": "camera",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
