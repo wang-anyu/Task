@@ -10,6 +10,11 @@ entity Devices {
     macAddress String,
     roomId String required,
     capabilities String,
+<<<<<<< HEAD
+=======
+    config JSON,
+    status JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     created ZonedDateTime required,
     modified ZonedDateTime required
 }
@@ -17,6 +22,10 @@ entity Devices {
 entity DeviceStates {
     deviceId String required,
     timestamp ZonedDateTime required,
+<<<<<<< HEAD
+=======
+    state JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     source String,
     userId String
 }
@@ -27,6 +36,10 @@ entity Events {
     level String required,
     deviceId String required,
     description String,
+<<<<<<< HEAD
+=======
+    details JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     userId String,
     ip String,
     cameraId String
@@ -39,8 +52,16 @@ entity Videos {
     endTime ZonedDateTime required,
     duration Long required,
     size Long required,
+<<<<<<< HEAD
     status String,
     tags String,
+=======
+    resolution JSON,
+    storage JSON,
+    status String,
+    tags String,
+    metadata JSON
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
 }
 
 entity Rooms {
@@ -50,6 +71,10 @@ entity Rooms {
     floor Integer required,
     area Double required,
     devices String,
+<<<<<<< HEAD
+=======
+    layout JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     created ZonedDateTime required,
     modified ZonedDateTime required,
     cameraId String
@@ -60,6 +85,11 @@ entity Scenes {
     name String required,
     description String,
     active Boolean required,
+<<<<<<< HEAD
+=======
+    triggers JSON,
+    actions JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     created ZonedDateTime required,
     modified ZonedDateTime required,
     lastExecuted ZonedDateTime
@@ -71,6 +101,10 @@ entity Alerts {
     level String required,
     deviceId String required,
     description String,
+<<<<<<< HEAD
+=======
+    details JSON,
+>>>>>>> ce1c93461cebce7aa3a965709852c2dee1b103cd
     status String,
     resolvedTime ZonedDateTime,
     resolvedBy String,
